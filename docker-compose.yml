@@ -8,6 +8,8 @@ services:
       - ./my.config.yml:/pygeoapi/local.config.yml 
     # templates
       - ./templates/_base.html:/pygeoapi/pygeoapi/templates/_base.html
+      # Spatial Filter via the map cf https://github.com/geopython/pygeoapi/issues/851
+      - ./templates/collections/items/index.html:/pygeoapi/pygeoapi/templates/collections/items/index.html 
     # data
       - ./data:/pygeoapi/tests/data
     # process
