@@ -139,21 +139,20 @@
     map.addLayer(items);
     map.fitBounds(items.getBounds());
     
-    // // Suggested implementation in relation with https://github.com/geopython/pygeoapi/issues/851
+    // Suggested implementation in relation with https://github.com/geopython/pygeoapi/issues/851
     
-    // const getBounds = function(map) {
-    //     return `${map.getBounds().getWest()},${map.getBounds().getSouth()},${map.getBounds().getEast()},${map.getBounds().getNorth()}`;
-    // }            
-    // map.on('zoomend', function() {
-    //    setMapFilter(getBounds(map))
-    // });
-    // map.on('dragend', function() {
-    //    setMapFilter(getBounds(map))
-    //  });
-    //  setMapFilter = function(bounds) {
-    //  location.href = '?bbox=' + bounds;
-    //  };
-
+    const getBounds = function(map) {
+        return `${map.getBounds().getWest()},${map.getBounds().getSouth()},${map.getBounds().getEast()},${map.getBounds().getNorth()}`;
+    }
+    const setMapFilter = function(bounds) {
+        location.href = '?bbox=' + bounds;
+    };
+    map.on('zoomend', function() {
+        setMapFilter(getBounds(map))
+    });
+    map.on('dragend', function() {
+        setMapFilter(getBounds(map))
+    });
     // // Displaying an alert cf: https://stackoverflow.com/questions/22948096/get-the-bounding-box-of-the-visible-leaflet-map
     
     // const getBounds = function(map) {
