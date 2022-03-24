@@ -471,7 +471,7 @@ MAP
   STATUS ON
 
   # actual data pointer
-  DATA ./data/rivers
+  DATA tests/data/rivers/rivers #./data/rivers
 
   METADATA
 
