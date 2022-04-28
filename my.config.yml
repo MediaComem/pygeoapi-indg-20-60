@@ -252,10 +252,10 @@ resources:
                 begin: 2011-11-11T11:11:11Z
                 end: null  # or empty (either means open ended)
         providers:
-            # - type: feature
-            #   name: GeoJSON
-            #   data: tests/data/ne_110m_lakes.geojson
-            #   id_field: id
+            - type: feature
+              name: GeoJSON
+              data: tests/data/ne_110m_lakes.geojson
+              id_field: id
             - type: tile
               name: MVT
               # data: http://localhost:9000/ne_110m_lakes/{z}/{x}/{y}
@@ -311,7 +311,7 @@ resources:
                   source_capabilities:
                       paging: True
                   source_options:
-                    #   OGR_WFS_VERSION: 2.0.0
+                    # OGR_WFS_VERSION: 2.0.0
                       OGR_WFS_LOAD_MULTIPLE_LAYER_DEFN: NO
                   gdal_ogr_options:
                       EMPTY_AS_NULL: NO
