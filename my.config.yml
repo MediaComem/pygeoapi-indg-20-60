@@ -139,7 +139,7 @@ resources:
               hreflang: fr-CH
         extents:
             spatial:
-                bbox: [5.96,45.82,10.49,47.81]
+                bbox: [5.955901955143183,45.81795848130465,10.492171265453214,47.80845430298337]
                 crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
             temporal:
                 begin:
@@ -201,14 +201,17 @@ resources:
               geometry:
                   x_field: long
                   y_field: lat
-    # Collection # 1 (RSU_LCZ):
-    rsu_lcz_en:
+    # Collection # 2 (RSU_LCZ):
+    rsu_lcz:
         type: collection
         lang: en-US
         title: 'Local Climate Zone'
         description: Local Climate Zone computed from the GeoClimate solution
         keywords:
-            - Climate Change, Urban heat island, Geoclimate, OSM
+            - Climate Change
+            - Urban heat island
+            - Geoclimate
+            - OSM
         crs:
             - CRS84
         links:
@@ -219,14 +222,182 @@ resources:
               hreflang: en-US
         extents:
             spatial:
-                bbox: [5.96,45.82,10.49,47.81]
+                bbox: [6.604342599999874,46.73864780000622,6.672052699999882,46.79537990000622]
                 crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
         providers:
             - type: feature
               name: GeoJSON
-              data: tests/data/rsu_lcz.geojson
+              data: tests/data/geoclimate/rsu_lcz.geojson
               id_field: id
-    # Collection # 3: larges lakes (mapbox-vector-tile)
+    # Collection # 3 (building_urban_typo):
+    building_urban_typo:
+        type: collection
+        lang: en-US
+        title: 'Building urban typology'
+        description: Building urban typology computed from the GeoClimate solution
+        keywords:
+            - Climate Change
+            - Urban heat island
+            - Geoclimate
+            - OSM
+        crs:
+            - CRS84
+        links:
+            - type: text/html
+              rel: canonical
+              title: information
+              href: https://github.com/orbisgis/geoclimate/wiki/LCZ-classification
+              hreflang: en-US
+        extents:
+            spatial:
+                bbox: [6.604342599999874,46.73864780000622,6.672052699999882,46.79537990000622]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        providers:
+            - type: feature
+              name: GeoJSON
+              data: tests/data/geoclimate/building_urban_typo.geojson
+              id_field: ID_BUILD
+    # Collection # 4 (tot_floor_area):
+    tot_floor_area:
+        type: collection
+        lang: en-US
+        title: 'Total floor area'
+        description: Total floor area computed from the GeoClimate solution
+        keywords:
+            - Climate Change
+            - Urban heat island
+            - Geoclimate
+            - OSM
+        crs:
+            - CRS84
+        links:
+            - type: text/html
+              rel: canonical
+              title: information
+              href: https://github.com/orbisgis/geoclimate/wiki/LCZ-classification
+              hreflang: en-US
+        extents:
+            spatial:
+                bbox: [6.604342599999874,46.73864780000622,6.672052699999882,46.79537990000622]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        providers:
+            - type: feature
+              name: GeoJSON
+              data: tests/data/geoclimate/tot_floor_area_rsu_lcz.geojson
+              id_field: ID_RSU
+    # Collection # 5 (ere_espace_reserve_eaux):
+    ere_espace_reserve_eaux:
+        type: collection
+        lang: en-US
+        title: 'ERE - Espace réservé aux eaux'
+        description: ERE - Espace réservé aux eaux du canton du Valais
+        keywords:
+            - ERE
+            - Protection des cours d'eau
+            - Open Data
+            - SITVS
+        crs:
+            - CRS84
+        links:
+            - type: text/html
+              rel: canonical
+              title: information
+              href: https://open-data-sitvalais.hub.arcgis.com/datasets/ere/explore
+              hreflang: en-US
+        extents:
+            spatial:
+                bbox: [6.7705792505215,45.85818508987,8.47851865125237,46.6540471539603]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        providers:
+            - type: feature
+              name: GeoJSON
+              data: tests/data/mgm/ERE_espace_reserve_eaux.geojson
+              id_field: OBJECTID
+    # Collection # 6 (ffp_foret_protectrice_ge):
+    ffp_foret_protectrice_ge:
+        type: collection
+        lang: en-US
+        title: 'FFP - Forêts protectrices du canton de Genève'
+        description: FFP - Forêts protectrices du canton de Genève
+        keywords:
+            - FFP
+            - Forêts
+            - Dangers naturels
+            - Protection
+            - Open Data
+            - SITG
+        crs:
+            - CRS84
+        links:
+            - type: text/html
+              rel: canonical
+              title: information
+              href: https://ge.ch/sitg/fiche/0632
+              hreflang: en-US
+        extents:
+            spatial:
+                bbox: [5.955901955143183,46.12855033182914,6.310282307177857,46.36457845650716]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        providers:
+            - type: feature
+              name: GeoJSON
+              data: tests/data/mgm/ffp_foret_protectrice_ge.geojson
+              id_field: id
+    # Collection # 7 (kataster-belasteter-standorte-zivilflugplaetze):
+    kataster-belasteter-standorte-zivilflugplaetze:
+        type: collection
+        lang: en-US
+        title: 'Cadastre des sites pollués – domaine des aérodromes civils (CSP OFAC) '
+        description: Cadastre des sites pollués – domaine des aérodromes civils (CSP OFAC) 
+        keywords:
+            - Cadastre
+            - Sites pollués
+            - Aérodromes civils
+        crs:
+            - CRS84
+        links:
+            - type: text/html
+              rel: canonical
+              title: information
+              href: https://opendata.swiss/fr/dataset/kataster-der-belasteten-standorte-im-bereich-der-zivilen-flugplatze-kbs-bazl
+              hreflang: en-US
+        extents:
+            spatial:
+                bbox: [5.955901955143183,45.81795848130465,10.492171265453214,47.80845430298337]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        providers:
+            - type: feature
+              name: GeoJSON
+              data: tests/data/mgm/kataster-belasteter-standorte-zivilflugplaetze_polygonstructure.geojson
+              id_field: id
+    # Collection # 8 (kataster-belasteter-standorte-zivilflugplaetze_standort):
+    kataster-belasteter-standorte-zivilflugplaetze_standort:
+        type: collection
+        lang: en-US
+        title: 'Cadastre des sites pollués – domaine des aérodromes civils (CSP OFAC) (lieu)'
+        description: Cadastre des sites pollués – domaine des aérodromes civils (CSP OFAC) (lieu)
+        keywords:
+            - Cadastre
+            - Sites pollués
+            - Aérodromes civils
+        crs:
+            - CRS84
+        links: 
+            - type: text/html
+              rel: canonical
+              title: information
+              href: https://opendata.swiss/fr/dataset/kataster-der-belasteten-standorte-im-bereich-der-zivilen-flugplatze-kbs-bazl
+              hreflang: en-US
+        extents:
+            spatial:
+                bbox: [5.955901955143183,45.81795848130465,10.492171265453214,47.80845430298337]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        providers:
+            - type: feature
+              name: GeoJSON
+              data: tests/data/mgm/kataster-belasteter-standorte-zivilflugplaetze_standort.geojson
+              id_field: id
+    # Collection # 5: larges lakes (mapbox-vector-tile)
     # Ref: https://raw.githubusercontent.com/geopython/pygeoapi/05dfebd7e4bdfd2b80d7785db12b5489964a0f99/tests/pygeoapi-test-config.yml
     lakes:
         type: collection
