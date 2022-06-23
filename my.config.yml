@@ -758,9 +758,9 @@ resources:
                 - natural dynamics  
                 - water
                 - space
-                # - natural areas, landscapes, ecosystems   
+                - natural areas, landscapes, ecosystems   
                 - Hydrography
-                # - Management, restriction or regulatory areas and reporting units   
+                - Management, restriction or regulatory areas and reporting units   
                 - natural area
                 - protected area  
                 - flood protection
