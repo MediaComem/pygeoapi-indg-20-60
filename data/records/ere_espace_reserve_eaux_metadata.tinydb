@@ -1,0 +1,64 @@
+{
+   "_default":{
+      "1":{
+         "type":"Feature",
+         "id":"b0174544-5055-4663-823c-2a7a022f355b",
+         "properties":{
+            "Title":"Espace réservé aux eaux de surface (ERE) - Cours d'eau latéraux et plans d'eau",
+            "Abstract":"Espace minimal autour des eaux de surface selon la loi révisée sur la protection des eaux entrée en vigueur en 2011. Il s’agit là d’un corridor comprenant le lit de la rivière et une bande de terrain de chaque côté, sur les berges, qui s’étend en fonction de la largeur du cours d’eau. Pour les plans d'eau, il s'agit d'une bande riveraine de 15m au minimum.",
+            "Subjects":[
+                "dynamique naturelle,",  
+                "eau,",  
+                "espace,",  
+                "zones naturelles, paysages, écosystèmes,",   
+                "Hydrographie,",   
+                "Zones de gestion, de restriction ou de réglementation et unités de déclaration,",   
+                "espace naturel,",   
+                "espace protégé,",  
+                "protection contre les crues,",  
+                "utilisation d'eau,",   
+                "opendata.swiss"
+            ],
+            "Creator": "Canton du Valais - Service des dangers naturels (SDANA) - Dangers naturels",
+            "Contributor": "Canton du Valais - Service des dangers naturels (SDANA) - Dangers naturels",
+            "Publisher": "Canton du Valais - Service des dangers naturels (SDANA) - Dangers naturels",
+            "Modified": "2022-02-10",
+            "Language": "fr-CH",
+            "Format":"ESRI Enterprise Geodatabase (-), ESRI Shapefile, autres formats sur demande / andere Formate auf Anfrage",
+            "Rights":" Géodonnées accessibles au public (niveau A selon l'OGéo) Les conditions générales d'utilisation des géodonnées du Canton du Valais font foi (https://www.vs.ch/fr/web/guest/information-legale). ",
+            "Bounding Box": "45.85818508987,6.7705792505215,46.6540471539603,8.47851865125237",
+            "_metadata-anytext":"",
+            "Links":[
+               "https://www.geocat.ch/geonetwork/srv/fre/catalog.search#/metadata/b0174544-5055-4663-823c-2a7a022f355b",
+               "https://sitonline.vs.ch/nature_paysage_foret/espace_reserve_eaux/fr/",
+               "https://open-data-sitvalais.hub.arcgis.com/maps/ere-espace-reserve-eaux/about",
+               "https://www.geocat.ch/geonetwork/srv/fre/md.viewer#/full_view/b0174544-5055-4663-823c-2a7a022f355b",
+               "https://opendata.swiss/fr/perma/b0174544-5055-4663-823c-2a7a022f355b@canton-du-valais-cc-geo"
+            ]
+         },
+         "geometry":{
+            "type":"Polygon",
+            "coordinates":[
+               [
+                  [
+                    6.7705792505215,
+                    45.85818508987
+                  ],
+                  [
+                    8.47851865125237,
+                    45.85818508987
+                  ],
+                  [
+                    8.47851865125237,
+                    46.6540471539603
+                  ],
+                  [
+                    6.7705792505215,
+                    46.6540471539603
+                  ]
+               ]
+            ]
+         }
+      }
+   }
+}
