@@ -2,12 +2,12 @@
    "_default":{
       "1":{
          "type":"Feature",
-         "id":"cfbd4793-4225-4743-942b-d9b97acfbfcc",
+         "id":"3f7c8f9f-b1be-4eb6-a9e2-7bdacf35dd58",
          "properties":{
             "Title":"swissTLMRegio Landcover",
             "Abstract":"Le Topic Landcover décrit la couverture du sol. Il est composé d'une feature class. Les surfaces forment un réseau de surface dans lequel des vides et des superpositions particulières sont autorisées.",
             "Subjects":[
-                "bois,",
+               "bois,",
                 "système d'information géographique,",
                 "végétation,",
                 "établissement humain,",
