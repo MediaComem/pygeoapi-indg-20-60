@@ -38,7 +38,9 @@ server:
     languages:
         # First language is the default language
         - en-US
-        - fr-CA
+        - de
+        - fr-CH
+        - it
     cors: true
     pretty_print: true
     limit: 10
@@ -53,7 +55,7 @@ server:
         attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
         # # Basemap # 3: ESRI World Imagery
         # url: https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png
-        # attribution: '&copy; <a href="https://www.esri.com/en-us/legal/copyright-trademarks">Powered by Esri</a>'  
+        # attribution: '&copy; <a href="https://www.esri.com/en-us/legal/copyright-trademarks">Powered by Esri</a>'
     manager:
         name: TinyDB
         connection: /tmp/pygeoapi-test-process-manager.db
@@ -66,19 +68,29 @@ logging:
 metadata:
     identification:
         title:
-            en: ngdi-20-60 
+            en: ngdi-20-60
             fr: indg-20-60
         description:
             en: pygeoapi demo instance
-            fr: instance de démo pygeoapi 
+            de: pygeoapi Demo-Instanz
+            fr-CH: instance de démo pygeoapi
+            it: istanza demo di pygeoapi
         keywords:
             en:
                 - geospatial
                 - data
                 - api
-            fr:
+            de:
+                - geospatial
+                - daten
+                - api
+            fr-CH:
                 - géospatiale
                 - données
+                - api
+            it: 
+                - geospaziale
+                - dati
                 - api
         keywords_type: theme
         terms_of_service: https://creativecommons.org/licenses/by/4.0/
@@ -95,7 +107,7 @@ metadata:
         address: Avenue des Sports 20, Case postale 521
         city: Yverdon-les-Bains
         stateorprovince: Vaud
-        postalcode: 1401 
+        postalcode: 1401
         country: Switzerland
         phone: +xx-xxx-xxx-xxxx
         fax: +xx-xxx-xxx-xxxx
@@ -111,11 +123,11 @@ resources:
     swissTLMRegio Landcover :
         type: collection
         title:
-            en: swissTLMRegio Landcover 
-            fr: swissTLMRegio Landcover
+            en: swissTLMRegio Landcover
+            fr-CH: swissTLMRegio Landcover
         description:
             en: The topic Landcover describes the topographic land cover. It consists of one feature class. The polygons build up a surface network, where gaps and overlays (according to the overlay matrix) are allowed.
-            fr: Le Topic Landcover décrit la couverture du sol. Il est composé d'une feature class. Les surfaces forment un réseau de surface dans lequel des vides et des superpositions particulières sont autorisées.
+            fr-CH: Le Topic Landcover décrit la couverture du sol. Il est composé d'une feature class. Les surfaces forment un réseau de surface dans lequel des vides et des superpositions particulières sont autorisées.
         keywords:
             en:
                 - wood
@@ -123,8 +135,8 @@ resources:
                 - vegetation
                 - human settlement
                 - lake
-                - rock   
-            fr:
+                - rock
+            fr-CH:
                 - bois
                 - sytème d'information géographique
                 - végétation
@@ -348,7 +360,7 @@ resources:
         type: collection
         lang: en-US
         title: 'Cadastre des sites pollués – domaine des aérodromes civils (CSP OFAC) '
-        description: Cadastre des sites pollués – domaine des aérodromes civils (CSP OFAC) 
+        description: Cadastre des sites pollués – domaine des aérodromes civils (CSP OFAC)
         keywords:
             - Cadastre
             - Sites pollués
@@ -382,7 +394,7 @@ resources:
             - Aérodromes civils
         crs:
             - CRS84
-        links: 
+        links:
             - type: text/html
               rel: canonical
               title: information
@@ -439,10 +451,10 @@ resources:
                     max: 11
                 schemes:
                     - WorldCRS84Quad
-              format: 
+              format:
                     name: pbf
                     mimetype: application/vnd.mapbox-vector-tile
-    # Collection # 4: exploitations agricoles WFS (OGR WFS provider) 
+    # Collection # 4: exploitations agricoles WFS (OGR WFS provider)
     exploitation_agricole:
         type: collection
         title: 'Exploitation agricole: Surfaces d’utilisation'
@@ -598,7 +610,218 @@ resources:
               name: GeoJSON
               data: tests/data/example_biodivar.geojson
               id_field: id_poi
+    # Collection # 8 (swissnames3D): 
+    swissnames3D:
+        type: collection
+        title: swissnames3D
+        description: With over 400,000 geo-referenced entries, swissNAMES3D is the most comprehensive collection of Swiss geographic names. The free dataset is based on a simple data model and provides the ideal basis for a broad range of applications.
+        keywords:
+            - swissnames
+            - swissnames3d
+            - toponyms
+        crs:
+            - EPSG:21781
+            - EPSG:2056
+            - EPSG:4326
+            - EPSG:3857
+        links:
+            - type: text/html
+              rel: describedby
+              title: Metadata as HTML
+              href: https://www.swisstopo.admin.ch/en/geodata/landscape/names3d.html#download
+              hreflang: en
+            - type: application/xml
+              rel: describedby
+              title: Metadata as iso19139 xml
+              href: https://www.swisstopo.admin.ch/en/geodata/landscape/names3d.html#download
+              hreflang: en
+        extents:
+            spatial:
+                bbox: [5.955901955143183,45.81795848130465,10.492171265453214,47.80845430298337] #[2423525.0, 1031225.0, 2872675.0, 1318525.0]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/EPSG:2056
+            temporal:
+                begin:
+                end: null  # or empty
+        providers:
+            - type: feature
+              name: OGR
+              data:
+                  source_type: GPKG
+                  source: tests/data/swissnames3d_2021_2056/swissNAMES3D_PKT.gpkg
+                  source_srs: EPSG:2056
+                  target_srs: EPSG:4326
+                  source_capabilities:
+                      paging: True
 
+                  gdal_ogr_options:
+                      EMPTY_AS_NULL: NO
+                      GDAL_CACHEMAX: 64
+                      # GDAL_HTTP_PROXY: (optional proxy)
+                      # GDAL_PROXY_AUTH: (optional auth for remote WFS)
+                      CPL_DEBUG: NO
+              id_field: fid
+            #   title_field: objektart
+              layer: swissNAMES3D_PKT
+    #  Records # 2: Cadastre des sites pollués – domaine des aérodromes civils (CSP OFAC) (TinyDB provider)
+    kataster-belasteter-standorte-zivilflugplaetze_metadata:
+        type: collection
+        title:
+            en: Cadastre of contaminated sites on civil aerodromes (CCS FOCA)
+            de: Kataster der belasteten Standorte im Bereich der zivilen Flugplätze (KbS BAZL)
+            fr: Cadastre des sites pollués – domaine des aérodromes civils (CSP OFAC)
+            it: Catasto dei siti inquinati nel settore degli aeroporti civili (CSIN UFAC)
+        description:
+            en: "Public register of contaminated sites within the perimeter of civil aerodromes. This includes information about the location, type and quantity of waste, the period of deposition, as well as conducted studies and measures. The following types of sites can be distinguished: operating site, accident site and deposition site."
+            de: "Öffentlich zugänglicher Kataster der belasteten Standorte im Perimeter der zivilen Flugplätze. Der Kataster gibt unter anderem Auskunft über die Lage, die Art und Menge der an den Standort gelangten Abfälle, den Ablagerungszeitraum, sowie durchgeführte Untersuchungen und Massnahmen. Unterschieden werden folgende Standorttypen: Betriebsstandort, Unfallstandort und Ablagerungsstandort."
+            fr: "Cadastre public des sites pollués dans le périmètre des aérodromes civils. Le cadastre renseigne dans la mesure du possible sur l’emplacement, le type et la quantité de déchets présents sur le site, sur la période de stockage des déchets et sur les investigations et les mesures de protection de l’environnement déjà réalisées. On distingue entre les types de sites suivants: aires d’exploitation, lieux d’accident et sites de stockage."
+            it: "Catasti pubblici dei siti inquinati nel perimetro degli aerodromi civili. Il catasto informa, tra l’altro, sull’ubicazione, sul tipo e la quantità di rifiuti presenti sul sito, sui tempi di deposito, sulle verifiche effettuate e le misure adottate. Si distingue tra i seguenti tipi di siti: aree d’impresa, luoghi d’incidente, siti di stoccaggio."
+        keywords:
+            en:
+                - polluted site  
+                - air navigation  
+                - airfield  
+                - official geodata  
+                - Conservation and archiving planning AAP - Confederation  
+                - opendata.swiss  
+                - FSDI Federal Spatial Data Infrastructure 
+                - airport  
+                - old hazardous site   
+                - Environmental monitoring facilities
+            de:
+                - Belasteter Standort  
+                - Luftfahrt  
+                - Flugplatz  
+                - Geobasisdaten  
+                - Aufbewahrungs- und Archivierungsplanung AAP - Bund  
+                - opendata.swiss  
+                - BGDI Bundesgeodaten-Infrastruktur
+                - Flughafen  
+                - Altlast 
+                - Umweltüberwachung 
+            fr: 
+                - site pollué  
+                - navigation aérienne  
+                - aérodrome
+                - géodonnées de base  
+                - Planification de la conservation et de l'archivage AAP - Conféderation  
+                - opendata.swiss
+                - IFDG l’Infrastructure Fédérale de données géographiques  
+                - aéroport
+                - site ancien dangereux   
+                - Installations de suivi environnemental
+            it:
+                - sito inquinato
+                - navigazione aerea  
+                - aerodromo  
+                - geodati di base  
+                - Pianificazione della conservazione e dell’archiviazione AAP - Confederazione  
+                - opendata.swiss  
+                - IFDG Infrastruttura federale dei dati geografici 
+                - aeroporto  
+                - discarica dismessa  
+                - Impianti di monitoraggio ambientale 
+        links:
+            - type: text/html
+              rel: canonical
+              title: information
+              href: https://www.geocat.ch/geonetwork/srv/fre/catalog.search#/metadata/3f7c8f9f-b1be-4eb6-a9e2-7bdacf35dd58
+              hreflang: fr-CH
+        extents:
+            spatial:
+                bbox: [5.955901955143183,45.81795848130465,10.492171265453214,47.80845430298337]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+            temporal:
+                begin:
+                end: null  # or empty (either means open ended)
+        providers:
+            - type: record
+              name: TinyDBCatalogue
+              data: tests/data/records/kataster-belasteter-standorte-zivilflugplaetze_metadata.tinydb
+              id_field: id
+              time_field: editionDate
+              title_field: title
+    #  Records # 3: Espace réservé aux eaux de surface (ERE) - Cours d'eau latéraux et plans d'eau (TinyDB provider)
+    ere_espace_reserve_eaux_metadata:
+        type: collection
+        title:
+            en: Surface Water Reserve (SWR) - Side streams and water bodies
+            de: Gewässerraum - oberirdische Seitenfliess- und stehende Gewässer
+            fr-CH: Espace réservé aux eaux de surface (ERE) - Cours d'eau latéraux et plans d'eau
+            it: Riserva di acque superficiali (SWR) - Ruscelli e corpi idrici laterali
+        description:
+            en: "Minimum space around surface waters according to the revised Water Protection Act which came into force in 2011. This is a corridor comprising the river bed and a strip of land on either side, on the banks, which extends according to the width of the watercourse. For water bodies, it is a riparian strip of at least 15m."
+            de: "Minimalen Gewässerraums entlang der meisten Gewässer gemäss die 2011 in Kraft getretene revidierte Gewässerschutzgesetzgebung. Dabei handelt es sich um einen Korridor bestehend aus dem Gewässer und einem Landstreifen entlang beider Ufer, dessen Ausdehnung von der Breite des Baches bzw. Flusses abhängig ist. Die Breite des Gewässerraums für stehende Gewässer muss, gemessen ab der Uferlinie, mindestens 15 m betragen."
+            fr: "Espace minimal autour des eaux de surface selon la loi révisée sur la protection des eaux entrée en vigueur en 2011. Il s’agit là d’un corridor comprenant le lit de la rivière et une bande de terrain de chaque côté, sur les berges, qui s’étend en fonction de la largeur du cours d’eau. Pour les plans d'eau, il s'agit d'une bande riveraine de 15m au minimum."
+            it: "Spazio minimo intorno alle acque di superficie secondo la revisione della legge sulla protezione delle acque entrata in vigore nel 2011. Si tratta di un corridoio che comprende il letto del fiume e una striscia di terreno su entrambi i lati, sulle sponde, che si estende in base alla larghezza del corso d'acqua. Per i corpi idrici, si tratta di una fascia ripariale di almeno 15 metri."
+        keywords:
+            en:
+                - natural dynamics  
+                - water
+                - space
+                # - natural areas, landscapes, ecosystems   
+                - Hydrography
+                # - Management, restriction or regulatory areas and reporting units   
+                - natural area
+                - protected area  
+                - flood protection
+                - water use
+                - opendata.swiss
+            de:
+                - Naturprozesse, Naturereignisse  
+                - Wasser  
+                - Weltraum  
+                - Natürliche Lebensräume, Landschaft, Ökosysteme 
+                - Gewässernetz  
+                - Bewirtschaftungsgebiete/Schutzgebiete/geregelte Gebiete und Berichterstattungseinheiten   
+                - Naturgebiet  
+                - Schutzgebiet  
+                - Hochwasserschutz  
+                - Wassernutzung   
+                - opendata.swiss
+            fr-CH: 
+                - dynamique naturelle  
+                - eau  
+                - espace  
+                - zones naturelles, paysages, écosystèmes   
+                - Hydrographie   
+                - Zones de gestion, de restriction ou de réglementation et unités de déclaration   
+                - espace naturel   
+                - espace protégé  
+                - protection contre les crues  
+                - utilisation d'eau
+                - opendata.swiss
+            it:
+                - dinamica naturale
+                - acqua
+                - spazio
+                - aree naturali, paesaggi, ecosistemi
+                - Idrografia
+                - Aree di gestione, restrizione o regolamentazione e unità di reporting   
+                - area naturale
+                - area protetta
+                - protezione dalle inondazioni  
+                - uso dell'acqua
+                - opendata.swiss
+        links:
+            - type: text/html
+              rel: canonical
+              title: information
+              href: https://www.geocat.ch/geonetwork/srv/fre/catalog.search#/metadata/b0174544-5055-4663-823c-2a7a022f355b
+              hreflang: fr-CH
+        extents:
+            spatial:
+                bbox: [6.7705792505215,45.85818508987,8.47851865125237,46.6540471539603]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+            temporal:
+                begin:
+                end: null  # or empty (either means open ended)
+        providers:
+            - type: record
+              name: TinyDBCatalogue
+              data: tests/data/records/ere_espace_reserve_eaux_metadata.tinydb
+              id_field: id
+              time_field: editionDate
+              title_field: title
     # Process # 1
     hello-world:
         type: process
