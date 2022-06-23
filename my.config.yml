@@ -822,6 +822,7 @@ resources:
               id_field: id
               time_field: editionDate
               title_field: title
+
     # Process # 1
     hello-world:
         type: process
